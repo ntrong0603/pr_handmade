@@ -1,0 +1,164 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#left {
+  padding: 0;
+}
+
+#left #logo {
+  background-color: #367fa9;
+}
+
+#left #logo a {
+  font-size: 24px;
+  text-align: center;
+  display: block;
+  padding: 10px;
+  color: white;
+}
+
+#left #catalog {
+  height: calc(100vh - 44px);
+}
+
+@media (max-width: 600px) {
+  #left #catalog {
+    height: calc(100vh - 88px);
+  }
+}
+
+#left #catalog ul {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #222d32;
+}
+
+#left #catalog ul li a {
+  color: white;
+  display: block;
+  width: 100%;
+  padding: 10px 10px;
+  margin-bottom: 5px;
+}
+
+#left #catalog ul li a:hover {
+  background: rgba(0, 44, 102, 0.5);
+}
+
+#left #catalog ul li a i {
+  margin-right: 5px;
+}
+
+#right {
+  padding: 0;
+}
+
+#right #header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #3c8dbc;
+}
+
+#right #header #button-catalog a {
+  color: white;
+  padding: 13.5px 10px;
+  display: block;
+}
+
+#right #header #button-catalog a:hover {
+  background-color: #367fa9;
+}
+
+#right #header .navbar-custom-menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#right #header .navbar-custom-menu ul li > a {
+  color: white;
+  padding: 13.5px 10px;
+  display: block;
+  position: relative;
+}
+
+#right #header .navbar-custom-menu ul li > a:hover {
+  background-color: #367fa9;
+}
+
+#right #header .navbar-custom-menu ul li > a.title::after {
+  content: attr(number);
+  display: block;
+  position: absolute;
+  width: 15px;
+  padding: 2px;
+  text-align: center;
+  height: 14px;
+  font-size: 10px;
+  top: 10px;
+  right: 0px;
+  border-radius: 2px;
+}
+
+#right #header .navbar-custom-menu ul li.tasks-menu a.title::after {
+  background: #dd4b39;
+}
+
+#right #header .navbar-custom-menu ul li.messages-menu a.title::after {
+  background: #00a65a;
+}
+
+#right #header .navbar-custom-menu ul li.notifications a.title::after {
+  background: #f39c12;
+}
+/*# sourceMappingURL=style.css.map */
