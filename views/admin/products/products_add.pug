@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    form
+        .form-group
+            label(for='name') Name
+            input#name.form-control(type='text', placeholder='Name', autocomplete='off')
+        .form-group
+            label(for='price') Price
+            input#price.form-control(type='text', placeholder='Price', autocomplete='off')
+        .form-group
+            label(for='count') Count
+            input#count.form-control(type='text', placeholder='Count', autocomplete='off')
+
+        .form-group.form-check
+            input#hidden.form-check-input(type='checkbox')
+            label.form-check-label(for='hidden') Hidden
+        button.btn.btn-primary(type='submit') Submit
