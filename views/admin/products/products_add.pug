@@ -1,18 +1,44 @@
 extends ../layout
 
 block content
-    form
-        .form-group
-            label(for='name') Name
-            input#name.form-control(type='text', placeholder='Name', autocomplete='off')
-        .form-group
-            label(for='price') Price
-            input#price.form-control(type='text', placeholder='Price', autocomplete='off')
-        .form-group
-            label(for='count') Count
-            input#count.form-control(type='text', placeholder='Count', autocomplete='off')
-
-        .form-group.form-check
-            input#hidden.form-check-input(type='checkbox')
-            label.form-check-label(for='hidden') Hidden
-        button.btn.btn-primary(type='submit') Submit
+    #title
+        | Add Product
+    #main
+        form(action='')
+            .form-group
+                label(for='Catalog') Catalog
+                select#Catalog.form-control
+                    option(selected='') Choose...
+                    option ...
+            .form-group
+                label(for='name') Name
+                input#name.form-control(type='text', placeholder='name', autocomplete='off')
+            .form-group
+                label(for='avata') Avata
+                input#avata.form-control-file(type='file', autocomplete='off')
+                img(src='https://i.pinimg.com/originals/f4/1c/48/f41c48a92a46f406e95b78bd4c56310c.jpg', alt='')
+            .form-row
+                .form-group.col-md-6
+                    label(for='price') Price
+                    input#price.form-control(type='text', autocomplete='off')
+                .form-group.col-md-6
+                    label(for='count') Count
+                    input#count.form-control(type='number', autocomplete='off')
+            .form-group
+                label(for='description') Description
+                textarea#description.form-control.ckeditor(rows='3')
+            .form-group
+                label(for='content') Content
+                textarea#content.form-control.ckeditor(rows='3')
+            .form-row
+                .form-group.col-md-1
+                    label(for='serial') Serial
+                    input#serial.form-control(type='number', value='1')
+            .form-row
+                .form-group.col-md-2
+                    .form-check
+                        input#hidden.form-check-input(type='checkbox')
+                        label.form-check-label(for='hidden')
+                            | Hidden
+            button.btn.btn-primary(type='submit') Sign in
+            button.btn.btn-primary(type='submit') Exit

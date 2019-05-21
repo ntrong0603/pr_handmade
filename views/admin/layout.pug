@@ -9,15 +9,16 @@ html
     .container-fluid
       .row
         // left
-        #left.col-12.col-sm-12.col-md-4.col-lg-3.col-xl-3
+        #left.col-12.col-sm-12.col-md-4.col-lg-3.col-xl-2
           include layout/catalog.pug
         // right
-        #right.col-12.col-sm-12.col-md-8.col-lg-9.col-xl-9
+        #right.col-12.col-sm-12.col-md-8.col-lg-9.col-xl-10
           include layout/header.pug
-          
-          block content
+          #content
+            block content
   
   script(src="/javascripts/jquery.js")
   script(src="/javascripts/popper.js")
   script(src="/javascripts/bootstrap.js")
+  script(src="/javascripts/admin/ckeditor/ckeditor.js")
   script(src="/javascripts/admin/main.js")
