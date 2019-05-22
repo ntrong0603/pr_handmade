@@ -1,43 +1,51 @@
 extends ../layout
 
 block content
-    #title
-        | Add Product
+    #title= nameAction
     #main
-        form(action='')
+        form(action='', method='POST')
+            input.form-control(type='hidden', value= item ? item._id : '', name='id')
             .form-group
-                label(for='Catalog') Catalog
-                select#Catalog.form-control
+                label(for='Catalog') Category
+                select#Catalog.form-control(name='category_id')
                     option(selected='') Choose...
-                    option ...
+                    option(value='1') Thể loại 1
+            .form-group
+                label(for='Catalog') Publishing
+                select#Catalog.form-control(name='publishing_id')
+                    option(selected='') Choose...
+                     option(value='1') Nhà xuất bản 1
             .form-group
                 label(for='name') Name
-                input#name.form-control(type='text', placeholder='name', autocomplete='off')
+                input#name.form-control(type='text', name='name', placeholder='name', autocomplete='off', value = item ? item.name : '')
             .form-group
                 label(for='avata') Avata
-                input#avata.form-control-file(type='file', autocomplete='off')
-                img(src='https://i.pinimg.com/originals/f4/1c/48/f41c48a92a46f406e95b78bd4c56310c.jpg', alt='')
+                input#avata.form-control-file(type='file', name='avata' autocomplete='off')
+                // img(src= item ? item.avata : '', alt='')
             .form-row
                 .form-group.col-md-6
                     label(for='price') Price
-                    input#price.form-control(type='text', autocomplete='off')
+                    input#price.form-control(type='text', name='price', autocomplete='off', value = item ? item.price : '')
                 .form-group.col-md-6
                     label(for='count') Count
-                    input#count.form-control(type='number', autocomplete='off')
+                    input#count.form-control(type='number', name='count', autocomplete='off', value = item ? item.count : '')
             .form-group
                 label(for='description') Description
-                textarea#description.form-control.ckeditor(rows='3')
+                textarea#description.form-control.ckeditor(rows='3', name='description')= item ? item.description : ''
             .form-group
                 label(for='content') Content
-                textarea#content.form-control.ckeditor(rows='3')
+                textarea#content.form-control.ckeditor(rows='3', name='content')= item ? item.content : ''
             .form-row
                 .form-group.col-md-1
                     label(for='serial') Serial
-                    input#serial.form-control(type='number', value='1')
+                    input#serial.form-control(type='number', name='serial', value= item ? item.serial : '1')
             .form-row
                 .form-group.col-md-2
                     .form-check
-                        input#hidden.form-check-input(type='checkbox')
+                        if item
+                            input#hidden.form-check-input(type='checkbox', name='hidden', checked= item ? item.hidden : item.hidden)
+                        else
+                             input#hidden.form-check-input(type='checkbox', name='hidden')
                         label.form-check-label(for='hidden')
                             | Hidden
             button.btn.btn-primary(type='submit') Sign in

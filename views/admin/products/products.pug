@@ -4,6 +4,22 @@ block content
     
         #title
             | Products
+        #select-filter
+            form(action='')
+                .form-row
+                    .form-group.col-md-2
+                        label(for='Catalog') Thể loại
+                        select#Catalog.form-control
+                            option(selected='') Choose...
+                            option ...
+                    .form-group.col-md-2
+                        label(for='Catalog') Nhà xuất bản
+                        select#Catalog.form-control
+                            option(selected='') Choose...
+                            option ...
+        #button-add-delete
+            a.btn.btn-primary.btn-lg.active(href='./products/add') Add
+            // a.page-link(href='#') Delete
         #main
             table.table
                 thead
@@ -16,57 +32,42 @@ block content
                         th(scope='col') Show/Hidden
                         th(scope='col') Edit/Delete
                 tbody
-                    tr
-                        th(scope='row') 1
-                        td Product 1
-                        td
-                            img(src='https://i.pinimg.com/originals/f4/1c/48/f41c48a92a46f406e95b78bd4c56310c.jpg', alt='')
-                        td 999.999 $
-                        td 10/100
-                        td
-                            a(href='') hidden
-                        td
-                            a.btn.btn-primary.btn-lg.active(href='#', role='button', aria-pressed='true') Edit
-                            a.btn.btn-primary.btn-lg.active(href='#', role='button', aria-pressed='true') Delete
-                    tr
-                        th(scope='row') 2
-                        td Product 2
-                        td
-                            img(src='https://i.pinimg.com/originals/f4/1c/48/f41c48a92a46f406e95b78bd4c56310c.jpg', alt='')
-                        td 999.999 $
-                        td 10/100
-                        td
-                            a(href='') hidden
-                        td
-                            a.btn.btn-primary.btn-lg.active(href='#', role='button', aria-pressed='true') Edit
-                            a.btn.btn-primary.btn-lg.active(href='#', role='button', aria-pressed='true') Delete
-                    tr
-                        th(scope='row') 3
-                        td Product 3
-                        td
-                            img(src='https://i.pinimg.com/originals/f4/1c/48/f41c48a92a46f406e95b78bd4c56310c.jpg', alt='')
-                        td 999.999 $
-                        td 10/100
-                        td
-                            a(href='') hidden
-                        td
-                            a.btn.btn-primary.btn-lg.active(href='#', role='button', aria-pressed='true') Edit
-                            a.btn.btn-primary.btn-lg.active(href='#', role='button', aria-pressed='true') Delete
-            nav(aria-label='Page navigation example')
-                ul.pagination
-                    li.page-item
-                        a.page-link(href='#', aria-label='Previous')
-                            span(aria-hidden='true') &laquo;
-                            span.sr-only Previous
-                    li.page-item
-                        a.page-link(href='#') 1
-                    li.page-item.active
-                        span.page-link
-                            | 2
-                            span.sr-only (current)
-                    li.page-item
-                        a.page-link(href='#') 3
-                    li.page-item
-                        a.page-link(href='#', aria-label='Next')
-                            span(aria-hidden='true') &raquo;
-                            span.sr-only Next
+                    if result
+                        each item in result
+                            tr
+                                th(scope='row')= item.serial
+                                td= item.name
+                                td
+                                    img(src='https://i.pinimg.com/originals/f4/1c/48/f41c48a92a46f406e95b78bd4c56310c.jpg', alt='')
+                                td= item.price
+                                td= item.sold
+                                    |/
+                                    = item.count
+                                td
+                                    a(href= './products/' + item._id)= item.hidden ? 'hidden' : 'show'
+                                                    
+                                td
+                                    a.btn.btn-primary.btn-lg.active(href= './products/edit/' + item._id, role='button', aria-pressed='true') Edit
+                                    a.btn.btn-primary.btn-lg.active(href= './products/delete/' + item._id, role='button', aria-pressed='true') Delete
+            if numPage > 1
+                nav(aria-label='Page navigation example')
+                    ul.pagination
+                        if ( (page - 1) > 0)
+                            li.page-item
+                                a.page-link(href=  page > 1 ? './products?page=' + (page - 1) : './products?page=1', aria-label='Previous')
+                                    span(aria-hidden='true') &laquo;
+                                    span.sr-only Previous
+                        - for (var i = 1; i <= numPage; i++)
+                                if (i == page)
+                                    li.page-item.active
+                                        span.page-link
+                                            = page
+                                            span.sr-only (current)
+                                else
+                                    li.page-item
+                                        a.page-link(href= './products?page=' + i)= i
+                        if ( (page + 1) <= numPage)
+                            li.page-item
+                                a.page-link(href= './products?page=' + (page + 1), aria-label='Next')
+                                    span(aria-hidden='true') &raquo;
+                                    span.sr-only Next
