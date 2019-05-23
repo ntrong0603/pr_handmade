@@ -1,6 +1,7 @@
 const products = require('../../models/products.model');
 const publishers = require ('../../models/publishers.model');
 const categorys = require ('../../models/category.model');
+const fs = require ('fs');
 
 module.exports.indexProducts = async (req, res, next) => {
     try {
@@ -37,7 +38,6 @@ module.exports.hiddenProduct = async (req, res, next) => {
         console.error(error);
     }
 }
-
 module.exports.indexAddProductItem = async (req, res, next) => {
     try {
         let publisher = await publishers.find();
@@ -52,7 +52,8 @@ module.exports.createProductItem = async (req, res, next) => {
     try {
         let arrayItems = await products.find();
         let _id = arrayItems.length > 0 ? arrayItems[arrayItems.length-1]._id + 1 : 1;
-        let {category_id, publishing_id, name, avata, price, count, description, content, serial, hidden} = req.body;
+        let {category_id, publishing_id, name, price, count, description, content, serial, hidden} = req.body;
+        let avata = req.file.path.split("\\").slice(1).join("/");
         hidden = hidden ? true : false;
         let newProductItem = new products({_id, serial, name, avata, price, count, description, content, category_id, publishing_id, hidden});
         
@@ -75,11 +76,12 @@ module.exports.indexEditProductItem = async (req, res, next) => {
 }
 module.exports.saveEditProductItem = async (req, res, next) => {
     try {
-        let {category_id, publishing_id, name, avata, price, count, description, content, serial, hidden} = req.body;
+        let {category_id, publishing_id, name, price, count, description, content, serial, hidden} = req.body;
         let item = await products.findById(req.params.id);
-
+        
         hidden = hidden ? true : false;
-        if(avata !== ''){
+        if(req.file){
+            let avata = req.file.path.split("\\").slice(1).join("/");
             item.avata = avata;
         }
         item.category_id = category_id;
@@ -98,10 +100,10 @@ module.exports.saveEditProductItem = async (req, res, next) => {
         console.error(error);
     }
 }
-
 module.exports.deleteProduct = async (req, res, next) => {
     try {
         let itemDelete = await products.findById(req.params.id);
+        fs.unlinkSync('./uploads/' + itemDelete.avata);
         await itemDelete.remove();
         res.redirect('/admin/products');
     } catch (error) {

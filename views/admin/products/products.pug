@@ -3,19 +3,19 @@ extends ../layout
 block content
         #title
             | Products
-        #select-filter
-            form(action='')
-                .form-row
-                    .form-group.col-md-2
-                        label(for='Catalog') Thể loại
-                        select#Catalog.form-control
-                            option(selected='') Choose...
-                            option ...
-                    .form-group.col-md-2
-                        label(for='Catalog') Nhà xuất bản
-                        select#Catalog.form-control
-                            option(selected='') Choose...
-                            option ...
+        //- #select-filter
+        //-     form(action='')
+        //-         .form-row
+        //-             .form-group.col-md-2
+        //-                 label(for='Catalog') Thể loại
+        //-                 select#Catalog.form-control
+        //-                     option(selected='') Choose...
+        //-                     option ...
+        //-             .form-group.col-md-2
+        //-                 label(for='Catalog') Nhà xuất bản
+        //-                 select#Catalog.form-control
+        //-                     option(selected='') Choose...
+        //-                     option ...
         #button-add-delete
             a.btn.btn-primary.btn-lg.active(href='./products/add') Add
             // a.page-link(href='#') Delete
@@ -37,7 +37,7 @@ block content
                                 th(scope='row')= item.serial
                                 td= item.name
                                 td
-                                    img(src='https://i.pinimg.com/originals/f4/1c/48/f41c48a92a46f406e95b78bd4c56310c.jpg', alt='')
+                                    img(src= '../'+item.avata, alt='')
                                 td= item.price
                                 td= item.sold
                                     |/

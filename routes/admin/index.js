@@ -1,5 +1,7 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const multer = require ('multer');
+const upload = multer({ dest: './uploads/products/' })
 
 const loginController = require('../../controllers/admin/login.controller');
 const productsController = require('../../controllers/admin/products.controller');
@@ -16,9 +18,9 @@ router.get('/' ,function(req, res, next) {
 router.get('/products', productsController.indexProducts);
 router.get('/products/hidden/:id', productsController.hiddenProduct);
 router.get('/products/add', productsController.indexAddProductItem);
-router.post('/products/add', productsController.createProductItem);
+router.post('/products/add', upload.single('avata'), productsController.createProductItem);
 router.get('/products/edit/:id', productsController.indexEditProductItem);
-router.post('/products/edit/:id', productsController.saveEditProductItem);
+router.post('/products/edit/:id', upload.single('avata'), productsController.saveEditProductItem);
 router.get('/products/delete/:id', productsController.deleteProduct);
 /* GET login page. */
 // router.get('/login', loginController.login);
