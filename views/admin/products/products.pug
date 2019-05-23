@@ -1,7 +1,6 @@
 extends ../layout
 
 block content
-    
         #title
             | Products
         #select-filter
@@ -44,7 +43,7 @@ block content
                                     |/
                                     = item.count
                                 td
-                                    a(href= './products/' + item._id)= item.hidden ? 'hidden' : 'show'
+                                    a(href= './products/hidden/' + item._id)= item.hidden ? 'hidden' : 'show'
                                                     
                                 td
                                     a.btn.btn-primary.btn-lg.active(href= './products/edit/' + item._id, role='button', aria-pressed='true') Edit

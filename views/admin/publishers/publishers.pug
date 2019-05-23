@@ -1,0 +1,50 @@
+extends ../layout
+
+block content
+    #title
+        | Publishers
+    #button-add-delete
+        a.btn.btn-primary.btn-lg.active(href='./publishers/add') Add
+        // a.page-link(href='#') Delete
+    #main
+        table.table
+            thead
+                tr
+                    th(scope='col') #
+                    th(scope='col') Name
+                    //- th(scope='col') Show/Hidden
+                    th(scope='col') Edit/Delete
+            tbody
+                if result
+                     each item in result
+                        tr
+                            th(scope='row')= item.serial
+                            td= item.name
+                            //- td
+                            //-     a(href= './publishers/' + item._id)= item.hidden ? 'hidden' : 'show'
+                                                    
+                            td
+                                a.btn.btn-primary.btn-lg.active(href= './publishers/edit/' + item._id, role='button', aria-pressed='true') Edit
+                                a.btn.btn-primary.btn-lg.active(href= './publishers/delete/' + item._id, role='button', aria-pressed='true') Delete
+        if numPage > 1
+            nav(aria-label='Page navigation example')
+                ul.pagination
+                    if ( (page - 1) > 0)
+                        li.page-item
+                            a.page-link(href=  page > 1 ? './publishers?page=' + (page - 1) : './publishers?page=1', aria-label='Previous')
+                                span(aria-hidden='true') &laquo;
+                                span.sr-only Previous
+                    - for (var i = 1; i <= numPage; i++)
+                            if (i == page)
+                                li.page-item.active
+                                    span.page-link
+                                        = page
+                                        span.sr-only (current)
+                            else
+                                li.page-item
+                                    a.page-link(href= './publishers?page=' + i)= i
+                    if ( (page + 1) <= numPage)
+                        li.page-item
+                            a.page-link(href= './publishers?page=' + (page + 1), aria-label='Next')
+                                span(aria-hidden='true') &raquo;
+                                span.sr-only Next

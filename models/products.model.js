@@ -17,10 +17,10 @@ const productsSchema = new mongoose.Schema({
     publishing_id: { type: String, required: true},
     hidden: {type: Boolean, default: true},
     day_create: { type: Date, default: Date.now },
-    day_edit: { type: Date, default: ''},
+    day_edit: { type: Date, default: ''}
 })
 
-const Products = mongoose.model('User', productsSchema);
+const Products = mongoose.model('Products', productsSchema);
 
 module.exports = Products;
 

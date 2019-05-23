@@ -1,4 +1,6 @@
 const products = require('../../models/products.model');
+const publishers = require ('../../models/publishers.model');
+const categorys = require ('../../models/category.model');
 
 module.exports.indexProducts = async (req, res, next) => {
     try {
@@ -36,8 +38,15 @@ module.exports.hiddenProduct = async (req, res, next) => {
     }
 }
 
-module.exports.indexAddProductItem = (req, res, next) => {
-    res.render('admin/products/products_add', {nameAction: 'Add Products'});
+module.exports.indexAddProductItem = async (req, res, next) => {
+    try {
+        let publisher = await publishers.find();
+        let category = await categorys.find();
+        res.render('admin/products/products_add', {nameAction: 'Add Products', publishers: publisher, categorys: category});
+    } catch (error) {
+        console.error(error);
+    }
+    
 }
 module.exports.createProductItem = async (req, res, next) => {
     try {
@@ -56,8 +65,10 @@ module.exports.createProductItem = async (req, res, next) => {
 }
 module.exports.indexEditProductItem = async (req, res, next) => {
     try {
+        let publisher = await publishers.find();
+        let category = await categorys.find();
         let item = await products.findById(req.params.id);
-        res.render('admin/products/products_add', {item: item, nameAction: 'Edit Products'});
+        res.render('admin/products/products_add', {item: item, nameAction: 'Edit Products', publishers: publisher, categorys: category});
     } catch (error) {
         console.error(error);
     }
