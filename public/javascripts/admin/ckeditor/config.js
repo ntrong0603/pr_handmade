@@ -7,8 +7,8 @@ CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here.
 	// For complete reference see:
 	// https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_config.html
-	config.extraPlugins = 'imageuploader';
-	config.filebrowserUploadUrl = '/uploads';
+	// config.extraPlugins = 'imageuploader';
+	// config.filebrowserUploadUrl = '/uploads';
 	// The toolbar groups arrangement, optimized for two toolbar rows.
 	config.toolbarGroups = [
 		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
