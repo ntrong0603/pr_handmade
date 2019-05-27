@@ -8,6 +8,10 @@ block content
             .form-group
                 label(for='name') Name
                 input#name.form-control(type='text', name='name', placeholder='name', autocomplete='off', value = item ? item.name : '')
+            if item    
+                .form-group
+                    label(for='link_seo') Link
+                    input#name.form-control(type='text', name='link_seo', placeholder='Link', autocomplete='off', value = item ? item.link_seo : '')
             .form-group
                 label(for='description') Description
                 textarea#description.form-control.ckeditor(rows='3', name='description')= item ? item.description : ''
@@ -28,4 +32,3 @@ block content
                         label.form-check-label(for='hidden')
                             | Hidden
             button.btn.btn-primary(type='submit') Save
-            button.btn.btn-primary(type='submit') Exit

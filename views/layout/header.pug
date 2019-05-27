@@ -1,0 +1,41 @@
+#header.container-fluid
+    .row
+        #left-header.col-12.col-sm-12.col-md-12.col-lg-4.col-xl-3
+            #logo
+                a(href='/')
+                    span
+                        i.fa.fa-book
+                        |  Book  Store
+        #right-header.col-12.col-sm-12.col-md-12.col-lg-8.col-xl-9
+            #search
+                form(action='/product/search')
+                    input(type='text', name='q', placeholder='Nhập tựa sách cần tìm')
+                    button(type='submit')
+                        i.fa.fa-search
+            #dky-dnhap-btnmenu
+                #btnmenu
+                    button#open-menu
+                        i.fa.fa-bars
+                #dky-dnhap
+                    a.item(href='')
+                        i.fa.fa-user
+                        |  Đăng nhhập
+                    a.item(href='')
+                        i.fa.fa-file-text-o
+                        |  Đăng ký
+                    //
+                        <div id="account">
+                            <ul>
+                                <li id="info">
+                                    <a><img src="./img/avata.JPG" alt="" > Lê Ngọc Trọng</a>
+                                    <ul id="acc-setting">
+                                        <li>
+                                            <a href="" id="setting"><i class="fa fa-cog"></i> <span>Chỉnh sửa</span></a>
+                                        </li>
+                                        <li>
+                                            <a href="" id="dn-admin"><i class="fa fa-cogs"></i> <span>Đăng nhập admin</span></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>

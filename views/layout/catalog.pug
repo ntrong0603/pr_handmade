@@ -1,0 +1,20 @@
+a#close-menu
+    i.fa.fa-times
+if listCategory
+    .item
+        .title
+            | Thể loại
+        .list
+            ul
+                each item in listCategory
+                    li
+                        a(href= '/product/theloai/'+item.link_seo+'_'+item._id)=item.name
+if listPublishers
+    .item
+        .title
+            | Nhà xuất bản
+        .list
+            ul
+                each item in listPublishers
+                    li
+                        a(href= '/product/nxb/'+item.link_seo+'_'+item._id)=item.name

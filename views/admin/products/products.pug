@@ -29,6 +29,7 @@ block content
                         th(scope='col') Price
                         th(scope='col') Sold/Count
                         th(scope='col') Show/Hidden
+                        th(scope='col') Hot
                         th(scope='col') Edit/Delete
                 tbody
                     if result
@@ -43,8 +44,9 @@ block content
                                     |/
                                     = item.count
                                 td
-                                    a(href= './products/hidden/' + item._id)= item.hidden ? 'hidden' : 'show'
-                                                    
+                                    a(href= './products/hidden/' + item._id + '?page='+page)= item.hidden ? 'hidden' : 'show'
+                                td
+                                    a(href= './products/hot/' + item._id + '?page='+page)= item.hot ? 'yes' : 'no'                                                  
                                 td
                                     a.btn.btn-primary.btn-lg.active(href= './products/edit/' + item._id, role='button', aria-pressed='true') Edit
                                     a.btn.btn-primary.btn-lg.active(href= './products/delete/' + item._id, role='button', aria-pressed='true') Delete

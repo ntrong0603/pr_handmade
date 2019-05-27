@@ -22,6 +22,10 @@ block content
             .form-group
                 label(for='name') Name
                 input#name.form-control(type='text', name='name', placeholder='name', autocomplete='off', value = item ? item.name : '')
+            if item    
+                .form-group
+                    label(for='link_seo') Link
+                    input#name.form-control(type='text', name='link_seo', placeholder='Link', autocomplete='off', value = item ? item.link_seo : '')
             .form-group
                 label(for='avata') Avata
                 input#avata.form-control-file(type='file', name='avata')
@@ -32,7 +36,7 @@ block content
                     input#price.form-control(type='text', name='price', autocomplete='off', value = item ? item.price : '')
                 .form-group.col-md-6
                     label(for='count') Count
-                    input#count.form-control(type='number', name='count', autocomplete='off', value = item ? item.count : '')
+                    input#count.form-control(type='number', name='count', autocomplete='off', value = item ? item.count : 0)
             .form-group
                 label(for='description') Description
                 textarea#description.form-control.ckeditor(rows='3', name='description')= item ? item.description : ''
@@ -52,5 +56,13 @@ block content
                              input#hidden.form-check-input(type='checkbox', name='hidden')
                         label.form-check-label(for='hidden')
                             | Hidden
+            .form-row
+                .form-group.col-md-2
+                    .form-check
+                        if item
+                            input#hot.form-check-input(type='checkbox', name='hot', checked= item ? item.hot : item.hot)
+                        else
+                             input#hot.form-check-input(type='checkbox', name='hot')
+                        label.form-check-label(for='hot')
+                            | Hot
             button.btn.btn-primary(type='submit') Save
-            button.btn.btn-primary(type='submit') Exit

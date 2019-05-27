@@ -10,6 +10,8 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin/index');
+const productRouter = require ('./routes/product');
+const getCatalog = require('./middlewares/getCatalog.middleware.js');
 
 const app = express();
 
@@ -25,8 +27,9 @@ app.use(cookieParser(process.env.COOKIE_PARSER));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/', getCatalog.getCatalog, indexRouter);
+app.use('/users', getCatalog.getCatalog, usersRouter);
+app.use('/product', productRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler

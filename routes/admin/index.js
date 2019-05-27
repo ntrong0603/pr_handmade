@@ -17,6 +17,7 @@ router.get('/' ,function(req, res, next) {
 /* Products page. */
 router.get('/products', productsController.indexProducts);
 router.get('/products/hidden/:id', productsController.hiddenProduct);
+router.get('/products/hot/:id', productsController.hotProduct);
 router.get('/products/add', productsController.indexAddProductItem);
 router.post('/products/add', upload.single('avata'), productsController.createProductItem);
 router.get('/products/edit/:id', productsController.indexEditProductItem);

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    .products
+        .title
+            span= publis.name
+        .row.items
+            if listItems && (listItems.length > 0)
+                each item in listItems
+                    a.item(href= '/product/detail/' + item.link_seo + '_' + item._id)
+                        div
+                            .avata
+                                img(src= '../../'+item.avata, alt= item.name)
+                            .name
+                                h3= item.name
+                            .price= item.price + ' đ'
+                        .description
+                            ul
+                                li= 'Tên sách: ' + item.name
+                                li= 'Nhà xuất bản: ' + item.name_publis
+                                li= 'Thể loại: ' + item.name_category
+                                li= 'Giá: ' + item.price + ' đ'
+            else
+                span#capnhatsp Sản phẩm đang cập nhật

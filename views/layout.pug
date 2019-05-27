@@ -2,6 +2,24 @@ doctype html
 html
   head
     title= title
+
+    link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/slick.css')
+    link(rel='stylesheet', href='/stylesheets/slick-theme.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    block content
+    include layout/header.pug
+    #main.container-fluid
+      .row
+        #left.col-lg-4.col-xl-2
+          include layout/catalog.pug
+        #right.col-12.col-sm-12.col-md-12.col-lg-8.col-xl-10
+          include layout/slider.pug
+          block content
+    include layout/footer.pug
+  script(src='/javascripts/jquery-3.4.1.min.js')
+  script(src='/javascripts/popper.min.js')
+  script(src='/javascripts/bootstrap.min.js')
+  script(src='/javascripts/slick.min.js')
+  script(src='/javascripts/main.js')

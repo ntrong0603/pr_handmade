@@ -1,4 +1,5 @@
 const publishers = require ('../../models/publishers.model');
+const funcitons =  require ('../../controllers/admin/functions');
 
 module.exports.indexPublishers = async (req, res, next) => {
     try {
@@ -33,7 +34,9 @@ module.exports.createPublisher = async (req, res, next) => {
         let _id = arrayItems.length > 0 ? arrayItems[arrayItems.length-1]._id + 1 : 1;
         let {name, description, content, serial, hidden} = req.body;
         hidden = hidden ? true : false;
-        let newPublisherItem = new publishers({_id, serial, name, description, content, hidden});
+        let link_seo = funcitons.createNameStandardize(name).link;
+        name = funcitons.createNameStandardize(name).name;
+        let newPublisherItem = new publishers({_id, serial, link_seo, name, description, content, hidden});
         await newPublisherItem.save();
         res.redirect('/admin/publishers');
     } catch (error) {
@@ -50,12 +53,16 @@ module.exports.indexEditPublisher = async (req, res, next) => {
 }
 module.exports.saveEditPublisher = async (req, res, next) => {
     try {
-        let {name, description, content, serial, hidden} = req.body;
+        let {name, description, link_seo, content, serial, hidden} = req.body;
         let item = await publishers.findById(req.params.id);
 
         hidden = hidden ? true : false;
-
-        item.name = name;
+        if(link_seo == ''){
+            item.link_seo = funcitons.createNameStandardize(name).link;
+        }else{
+            item.link_seo = link_seo;
+        }
+        item.name = funcitons.createNameStandardize(name).name;
         item.description = description;
         item.content = content;
         item.serial = serial;

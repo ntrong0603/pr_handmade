@@ -3,6 +3,7 @@ const mongoose = require ('mongoose');
 const publisherSchema = new mongoose.Schema({
     _id: {type: Number, required: true},
     name: {type: String, required: true},
+    link_seo: { type: String, default: ''},
     serial: {type: Number, default: 1},
     description: { type: String, default: ''},
     content: { type: String, default: ''},
