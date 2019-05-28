@@ -5,7 +5,6 @@ module.exports.requireLogin = async (req, res, next) => {
         let username = req.cookies.user_name;
         let password = req.signedCookies.password;
         let role = req.cookies.role;
-        username = username.toLowerCase();
         let user = await User.findOne({user_name: {$eq: username}, password: {$eq: password}});
         if(!user){
             res.redirect('/');
