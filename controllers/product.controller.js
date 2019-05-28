@@ -82,10 +82,13 @@ module.exports.indexDetail = async (req, res, next) => {
         let category = await categorys.findById(item.category_id);
         let publisher = await publishers.findById(item.publishing_id);
 
-        let itemsCategory = await products.find({category_id: {$eq: item.category_id}}, null, { sort : { serial : -1, _id: -1 }});
+        item.view = item.view + 1;
+        await item.save();
+
+        let itemsCategory = await products.find({category_id: {$eq: item.category_id}, _id: {$ne: item._id}}, null, { sort : { serial : -1, _id: -1 }});
         itemsCategory = functions.getPublAndCate(itemsCategory, listPublishers, listCategory);
 
-        let itemsPublisher = await products.find({publishing_id: {$eq: item.publishing_id}}, null, { sort : { serial : -1, _id: -1 }});
+        let itemsPublisher = await products.find({publishing_id: {$eq: item.publishing_id}, _id: {$ne: item._id}}, null, { sort : { serial : -1, _id: -1 }});
         itemsPublisher = functions.getPublAndCate(itemsPublisher, listPublishers, listCategory);
         
         res.render('detail', {title: item.name,item: item, category: category, publisher: publisher, itemsCategory: itemsCategory, itemsPublisher: itemsPublisher});

@@ -457,6 +457,9 @@ a:hover{
             }
         }
         .products{
+            &:not(:first-child){
+                margin-top: 15px;
+            }
             .title{
                 border-bottom: 1px solid #f19c65;
                 span{

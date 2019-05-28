@@ -456,6 +456,10 @@ a:hover {
   color: #0000008e;
 }
 
+#main #right .products:not(:first-child) {
+  margin-top: 15px;
+}
+
 #main #right .products .title {
   border-bottom: 1px solid #f19c65;
 }
