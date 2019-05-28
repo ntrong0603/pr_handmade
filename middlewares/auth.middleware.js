@@ -29,6 +29,10 @@ module.exports.kiemTraTonTaiDangNhap = async (req, res, next) => {
     try {
         let username = req.cookies.user_name;
         let password = req.signedCookies.password;
+        if(username == ''){
+            res.redirect('/');
+            return;
+        }
         username = username.toLowerCase();
         let user = await User.findOne({user_name: {$eq: username}, password: {$eq: password}});
         if(!user){
