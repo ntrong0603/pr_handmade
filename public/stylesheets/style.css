@@ -266,7 +266,11 @@ a:hover {
 #header #right-header #dky-dnhap-btnmenu #dky-dnhap #account ul li ul {
   display: none;
   position: absolute;
-  width: 100%;
+  min-width: 150px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  right: 0;
   padding: 0px 5px;
   background: #fdfafa;
   border: 1px solid transparent;
@@ -365,8 +369,10 @@ a:hover {
   display: none;
 }
 
-#main #left .item {
-  min-width: 300px;
+@media (max-width: 990px) {
+  #main #left .item {
+    min-width: 300px;
+  }
 }
 
 #main #left .item .title {
@@ -653,6 +659,52 @@ a:hover {
   margin: auto;
   font-weight: bold;
   padding: 15px;
+}
+
+#main #right .products #detail {
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#main #right .products #detail #avata {
+  width: 20%;
+  padding: 15px;
+}
+
+#main #right .products #detail #avata img {
+  width: 100%;
+}
+
+@media (max-width: 550px) {
+  #main #right .products #detail #avata {
+    width: 100%;
+  }
+}
+
+#main #right .products #detail #info {
+  width: 80%;
+  padding: 15px;
+  border: 1px solid #f19c65;
+  border-radius: 5px;
+}
+
+#main #right .products #detail #info :not(:last-child) {
+  margin-bottom: 5px;
+}
+
+#main #right .products #detail #info #name h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+@media (max-width: 550px) {
+  #main #right .products #detail #info {
+    width: 100%;
+    margin-top: 10px;
+  }
 }
 
 #footer {

@@ -1,19 +1,19 @@
 #header
   .navbar-custom-menu
     ul
-      li.dropmenu.messages-menu
-        a.title(href='', number='9')
-          i.fa.fa-envelope-o
-      li.dropmenu.notifications
-        a.title(href='', number='15')
-          i.fa.fa-bell
-      li.dropmenu.tasks-menu
-        a.title(href='', number='20')
-          i.fa.fa-flag
+      //- li.dropmenu.messages-menu
+      //-   a.title(href='', number='9')
+      //-     i.fa.fa-envelope-o
+      //- li.dropmenu.notifications
+      //-   a.title(href='', number='15')
+      //-     i.fa.fa-bell
+      //- li.dropmenu.tasks-menu
+      //-   a.title(href='', number='20')
+      //-     i.fa.fa-flag
       li#account.dropmenu
-        a(href='') admin 1
+        a(href='')= user
         ul
+          //- li
+          //-   a(href='') Setting
           li
-            a(href='') Setting
-          li
-            a(href='') Logout
+            a(href='./users/logout') Logout

@@ -118,6 +118,7 @@ module.exports.saveEditProductItem = async (req, res, next) => {
         item.serial = serial;
         item.hidden = hidden;
         item.hot = hot;
+        item.day_edit = Date.now();
 
         await item.save();
         res.redirect('/admin/products');

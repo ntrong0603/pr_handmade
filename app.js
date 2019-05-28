@@ -12,6 +12,7 @@ const usersRouter = require('./routes/users');
 const adminRouter = require('./routes/admin/index');
 const productRouter = require ('./routes/product');
 const getCatalog = require('./middlewares/getCatalog.middleware.js');
+const auth = require('./middlewares/auth.middleware.js');
 
 const app = express();
 
@@ -28,9 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use('/', getCatalog.getCatalog, indexRouter);
-app.use('/users', getCatalog.getCatalog, usersRouter);
+app.use('/users', auth.kiemTraTonTaiDangNhap, usersRouter);
 app.use('/product', productRouter);
-app.use('/admin', adminRouter);
+app.use('/admin', auth.requireLogin, adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

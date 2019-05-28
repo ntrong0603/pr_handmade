@@ -3,12 +3,9 @@ const router = express.Router();
 const multer = require ('multer');
 const upload = multer({ dest: './uploads/products/' })
 
-const loginController = require('../../controllers/admin/login.controller');
 const productsController = require('../../controllers/admin/products.controller');
 const categoryController = require('../../controllers/admin/category.controller');
 const publishersController = require('../../controllers/admin/publishers.controller');
-
-const auth = require ('../../middlewares/admin/auth.middleware');
 
 /* Home page. */
 router.get('/' ,function(req, res, next) {

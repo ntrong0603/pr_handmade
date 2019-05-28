@@ -9,7 +9,7 @@
         #right-header.col-12.col-sm-12.col-md-12.col-lg-8.col-xl-9
             #search
                 form(action='/product/search')
-                    input(type='text', name='q', placeholder='Nhập tựa sách cần tìm')
+                    input(type='text', name='q', placeholder='Nhập tựa sách cần tìm', value = querySearch ? querySearch : '')
                     button(type='submit')
                         i.fa.fa-search
             #dky-dnhap-btnmenu
@@ -17,25 +17,27 @@
                     button#open-menu
                         i.fa.fa-bars
                 #dky-dnhap
-                    a.item(href='')
-                        i.fa.fa-user
-                        |  Đăng nhhập
-                    a.item(href='')
-                        i.fa.fa-file-text-o
-                        |  Đăng ký
-                    //
-                        <div id="account">
-                            <ul>
-                                <li id="info">
-                                    <a><img src="./img/avata.JPG" alt="" > Lê Ngọc Trọng</a>
-                                    <ul id="acc-setting">
-                                        <li>
-                                            <a href="" id="setting"><i class="fa fa-cog"></i> <span>Chỉnh sửa</span></a>
-                                        </li>
-                                        <li>
-                                            <a href="" id="dn-admin"><i class="fa fa-cogs"></i> <span>Đăng nhập admin</span></a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
+                    if !login
+                        a.item(href='/users')
+                            i.fa.fa-user
+                            |  Đăng nhhập
+                        a.item(href='/users/signup')
+                            i.fa.fa-file-text-o
+                            |  Đăng ký
+                    else
+                        #account
+                            ul
+                                li#info
+                                    a
+                                        img(src='../../images/avata.JPG', alt='')
+                                        = username
+                                    ul#acc-setting
+                                        if role == 1
+                                            li
+                                                a#dn-admin(href='/admin')
+                                                    i.fa.fa-cogs
+                                                    span Chuyển đến page quản lý
+                                        li
+                                            a#setting(href='./users/logout')
+                                                i.fa.fa-cog
+                                                span Logout

@@ -67,6 +67,7 @@ module.exports.saveEditPublisher = async (req, res, next) => {
         item.content = content;
         item.serial = serial;
         item.hidden = hidden;
+        item.day_edit = Date.now();
 
         await item.save();
         res.redirect('/admin/publishers');

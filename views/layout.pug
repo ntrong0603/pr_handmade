@@ -2,7 +2,7 @@ doctype html
 html
   head
     title= title
-
+    link(rel='shortcut icon', type='image/png', href='/images/favicon.png')
     link(rel='stylesheet', href='/stylesheets/font-awesome.min.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/slick.css')
@@ -15,7 +15,7 @@ html
         #left.col-lg-4.col-xl-2
           include layout/catalog.pug
         #right.col-12.col-sm-12.col-md-12.col-lg-8.col-xl-10
-          include layout/slider.pug
+          // include layout/slider.pug
           block content
     include layout/footer.pug
   script(src='/javascripts/jquery-3.4.1.min.js')
