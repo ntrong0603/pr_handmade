@@ -33,7 +33,6 @@ module.exports.kiemTraTonTaiDangNhap = async (req, res, next) => {
             next();
             return;
         }
-        username = username.toLowerCase();
         let user = await User.findOne({user_name: {$eq: username}, password: {$eq: password}});
         if(!user){
             next();
