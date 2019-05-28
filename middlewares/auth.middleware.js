@@ -30,7 +30,7 @@ module.exports.kiemTraTonTaiDangNhap = async (req, res, next) => {
         let username = req.cookies.user_name;
         let password = req.signedCookies.password;
         if(username == ''){
-            res.redirect('/');
+            next();
             return;
         }
         username = username.toLowerCase();
