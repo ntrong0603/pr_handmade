@@ -36,7 +36,7 @@ module.exports.indexTheLoai = async (req, res, next) => {
         let listItems = await products.find({hidden: false, category_id: idCategory}, null, { sort : { serial : -1, _id: -1 }}).exec();
         listItems = functions.getPublAndCate(listItems, listPublishers, listCategory);
 
-        res.render('category', {listItems: listItems, category: category});
+        res.render('category', {title: category.name, listItems: listItems, category: category});
     } catch (error) {
         console.log(error);
     }
@@ -52,7 +52,7 @@ module.exports.indexNXB = async (req, res, next) => {
         let listItems = await products.find({hidden: false, publishing_id: idPublis}, null, { sort : { serial : -1, _id: -1 }}).exec();
         listItems = functions.getPublAndCate(listItems, listPublishers, listCategory);
 
-        res.render('publisher', {listItems: listItems, publis: publis});
+        res.render('publisher', {title: publis.name, listItems: listItems, publis: publis});
     } catch (error) {
         console.log(error);
     }
@@ -67,7 +67,7 @@ module.exports.search = async (req, res, next) => {
         let listItems = await products.find({hidden: false, name: { $regex: query, $options: 'i' }});
         listItems = functions.getPublAndCate(listItems, listPublishers, listCategory);
 
-        res.render('search', {listItems: listItems, querySearch: query});
+        res.render('search', {title: 'Search', listItems: listItems, querySearch: query});
     } catch (error) {
         console.log(error);
     }
@@ -88,7 +88,7 @@ module.exports.indexDetail = async (req, res, next) => {
         let itemsPublisher = await products.find({publishing_id: {$eq: item.publishing_id}}, null, { sort : { serial : -1, _id: -1 }});
         itemsPublisher = functions.getPublAndCate(itemsPublisher, listPublishers, listCategory);
         
-        res.render('detail', {item: item, category: category, publisher: publisher, itemsCategory: itemsCategory, itemsPublisher: itemsPublisher});
+        res.render('detail', {title: item.name,item: item, category: category, publisher: publisher, itemsCategory: itemsCategory, itemsPublisher: itemsPublisher});
     } catch (error) {
         console.log(error);
     }

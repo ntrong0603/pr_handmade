@@ -14,7 +14,7 @@ module.exports.indexPage = async (req, res, next) => {
         listenItemsHot = functions.getPublAndCate(listenItemsHot, listPublishers, listCategory);
         listenItemsView = functions.getPublAndCate(listenItemsView, listPublishers, listCategory);
         
-        res.render('index', {title: 'Home Page', listItems: listItems, listenItemsHot: listenItemsHot, listenItemsView: listenItemsView});
+        res.render('index', {title: 'Book Store', listItems: listItems, listenItemsHot: listenItemsHot, listenItemsView: listenItemsView});
     }
     catch(e){
         console.log(e);
