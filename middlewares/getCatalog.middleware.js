@@ -9,7 +9,7 @@ module.exports.getCatalog = async (req, res, next) => {
         res.locals.listCategory = listCategory;
         let username = req.cookies.user_name;
         res.locals.login = false;
-        if(username != ''){
+        if(username && username != ''){
             res.locals.login = true;
             res.locals.role = req.cookies.role;
             res.locals.username = username;
